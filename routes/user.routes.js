@@ -13,7 +13,7 @@ const authMiddleware = require('../middleware/authMiddleware')
 // AL routes
 router.get("/allusers", authMiddleware , getAllUsers);
 
-router.post("/signup", signup);
+router.post("/signup", signupValidation, signup);
 
 router.post("/login/",loginValidation, login);
 

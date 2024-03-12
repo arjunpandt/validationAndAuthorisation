@@ -1,8 +1,8 @@
 const {login,signup} =  require("./user.schema");
 
-module.exports = {
 
-   loginValidation: async (req, res, next ) =>{
+
+   const loginValidation = async (req, res, next ) =>{
        const value = await login.validate(req.body);
        if(value.error){
            res.status(400).json({
@@ -12,8 +12,9 @@ module.exports = {
        } else {
            next();
        }
-   },
-   signValidation: async (req, res, next ) =>{
+   }
+
+   const signupValidation = async (req, res, next ) =>{
     const value = await signup.validate(req.body);
     if(value.error){
         res.status(400).json({
@@ -24,4 +25,8 @@ module.exports = {
         next();
     }
 }
-}
+
+module.exports = {
+    loginValidation,
+    signupValidation,
+  };
